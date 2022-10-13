@@ -6,19 +6,23 @@ const pool = createPool({
     password: "bsale_test",
     database: "bsale_test",
 });
-function keepAlive() {
 
-    pool.getConnection((err, connection) => {
-        if (err) console.log('query connec error!', err);
+function persistConnection() {
 
-        connection.query((err, rows) => {
-            err ? reject(err) : resolve(rows)
+    new Promise((resolve, reject) => {
+        pool.getConnection((err, connection) => {
+
+            if (err) console.log('query connec error!', err);
+
+            connection.query((err, rows) => {
+                err ? reject(err) : resolve(rows)
+            });
+            connection.release();
         });
 
-        connection.release();
     });
-}
+};
 
-setInterval(keepAlive, 120000);
+setInterval(persistConnection, 120000);
 
 module.exports = pool;
