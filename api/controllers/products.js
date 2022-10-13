@@ -14,7 +14,7 @@ exports.allProducts = async (req, res, next) => {
             return res.send(products);
         })
     } catch (error) {
-        return res.status(500).json({ message: "SOmething goes wrong" })
+        return res.status(500).json({ message: "Something goes wrong" })
     }
 };
 
