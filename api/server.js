@@ -7,7 +7,7 @@ const cors = require('cors');
 const volleyball = require('volleyball')
 
 // Importo rutas
-const routes = require("./routes");
+const routes = require('./routes');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(
 );
 
 // Routes
-app.use("/api", routes);
+app.use('/api', routes);
 
 // El Middleware para manejo de errores posee un parámetro extra, en este caso lo llamo err
 // Este último Middleware detecta los errores y los coloca en dicho parámetro

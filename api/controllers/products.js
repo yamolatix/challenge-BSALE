@@ -14,7 +14,7 @@ exports.allProducts = async (req, res, next) => {
             return res.send(products);
         })
     } catch (error) {
-        return res.status(500).json({ message: "Something goes wrong" })
+        return res.status(500).json({ message: 'Something goes wrong' })
     }
 };
 
@@ -34,7 +34,7 @@ exports.individualProduct = async (req, res, next) => {
             return res.send(product);
         })
     } catch (error) {
-        return res.status(500).json({ message: "Something goes wrong" })
+        return res.status(500).json({ message: 'Something goes wrong' })
     }
 };
 
@@ -54,6 +54,6 @@ exports.searchProducts = async (req, res, next) => {
             return res.send(search);
         })
     } catch (error) {
-        return res.status(500).json({ message: "Something goes wrong" })
+        return res.status(500).json({ message: 'Something goes wrong' })
     }
 }

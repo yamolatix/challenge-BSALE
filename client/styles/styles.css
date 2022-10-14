@@ -59,3 +59,46 @@ body {
     opacity: 0.7;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
+
+/* PRODUCT CARD */
+
+.shop-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 30px 80px 0 80px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: auto;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card > img {
+    width: 90%;
+    height: 250px;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
