@@ -18,7 +18,7 @@ app.use(volleyball)
 app.use(
     cors({
         header: 'Access-Control-Allow-Origin: *',
-        methods: 'GET,PUT,POST,DELETE',
+        methods: 'PUT, GET, POST, DELETE, OPTIONS',
         credentials: true,
     })
 );

@@ -9,23 +9,4 @@ const pool = createPool({
     database: 'bsale_test',
 });
 
-// Creo función de persistencia y manejo de errores.
-/* function persistConnection() {
-
-    new Promise((resolve, reject) => {
-        pool.getConnection((err, connection) => {
-
-            if (err) console.log('query connec error!', err);
-
-            connection.query((err, rows) => {
-                err ? reject(err) : resolve(rows)
-            });
-            connection.release();
-        });
-
-    });
-};
-
-setInterval(persistConnection, 120000); */
-
 module.exports = pool;

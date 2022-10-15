@@ -6,37 +6,68 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' href='./styles/styles.css' />
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous'>
     <title>Desafío Producto | BSALE</title>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <div class='nav-container'>
-        <nav class='navbar'>
-            <h1 class='navbar-logo'>BSALE</h1>
-            <h1 class='ver-carrito' id='verCarrito'>🛒</h1>
+    <nav class='navbar navbar-expand-lg bg-light'>
+        <div class='container-fluid'>
+            <a class='navbar-brand' href='#'>BSALE</a>
 
-        </nav>
-    </div>
-    <div class='contenedor'></div>
+            <button class='navbar-toggler' type='button' data-bs-toggle='collapse'
+                data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false'
+                aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+            </button>
+            <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+                <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+                    <li class='nav-item dropdown'>
+                        <a class='nav-link dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown'
+                            aria-expanded='false'>
+                            Categories
+                        </a>
+                        <ul class='dropdown-menu'>
+                            <li><a class='dropdown-item' href='#'>Action</a></li>
+                            <li><a class='dropdown-item' href='#'>Another action</a></li>
+                            <li>
+                                <hr class='dropdown-divider'>
+                            </li>
+                            <li><a class='dropdown-item' href='#'>Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class='d-flex' role='search'>
+                    <input class='form-control me-2' type='search' placeholder='Search' aria-label='Search'
+                        id='inputSearch'>
+                    <button class='btn btn-outline-success' type='submit'>Search</button>
+                </form>
 
-    <!-- BANNER -->
-    <div class='banner'>
-        <nav class='banner-container'>
-            <h1>Bsale Drinks</h1>
-            <p>the best web to do your shopping drinks</p>
-        </nav>
-    </div>
+                <h1 class='ver-carrito' id='verCarrito'>🛒<span class='cantidad-carrito' id='cantidadCarrito'></span>
+                </h1>
+                <div class='contenedor'></div>
+
+            </div>
+        </div>
+    </nav>
 
     <!-- SHOP CONTENT -->
-    <div class='shop-content' id='shopContent'></div>
+    <div class='container mt-6'>
+        <div class='row' id='shopContent'>
+           
+        </div>
+    </div>
 
     <!-- MODAL CONTAINER -->
-    <div class="modal-container" id="modal-container"></div>
+    <div class='modal-container' id='modalContainer'></div>
 
 
     <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js'
+        integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3'
+        crossorigin='anonymous'></script>
     <script type='module' src='app.js'></script>
 </body>
 
