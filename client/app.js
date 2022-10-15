@@ -1,50 +1,45 @@
-const d = document;
-
-// TRAIGO DEL SERVIDOR LA RUTA QUE TRAE LOS PRODUCTOS
+// Pedido que trae todos los products
 async function allProducts() {
-    let result = await axios.get('http://localhost:3001/api/products');
-    let products = await result.data;
+    let result = await axios.get('http://localhost:3001/api/products')
+    let products = await result.data
     return products;
 };
 
-// TRAIGO DEL SERVIDOR LA RUTA QUE BUSCA
+// Pedido que busca los productos de acuerdo a su nombre
 async function searchProducts(name) {
-    let result = await axios.get(`http://localhost:3001/api/products/search/${name}`);
-    let productsSearch = result.data;
-    return productsSearch;
-};
+    let result = await axios.get(`http://localhost:3001/api/products/search/${name}`)
+    let productsSearch = result.data
+    return productsSearch
+}
 
-// TRAIGO DEL SERVIDOR LA RUTA QUE LAS CATEGORIAS
+// Pedido que busca las categorias
 async function allCategories() {
-    let result = await axios.get(`http://localhost:3001/api/category`);
-    let productsSearch = showSelectCategories(result.data);
-    return productsSearch;
-};
+    let result = await axios.get(`http://localhost:3001/api/category`)
+    let productsSearch = showSelectCategories(result.data)
+    return productsSearch
+}
 
-// TRAIGO DEL SERVIDOR LA RUTA QUE TRAE TRAE LOS PRODUCTOS QUE PERTENECEN A LA CATEGORÍA 
+// Pedido de los productos que trae cada categoría
 async function productsInCategories(id) {
     let result = await axios.get(`http://localhost:3001/api/category/${id}`);
     let productsSearch = result.data;
     shopContent.innerHTML = '';
     productsGrid(productsSearch);
-};
+}
 
 // HTML
-// EMPIEZO TRAYENDO EL CONTENTEDOR QUE CREE DESDE INDEX.HTML PARA GUARDAR TODA ESTA LÓGICA DENTRO DE ESA ETIQUETA
-const verCarrito = d.getElementById('verCarrito');
-const modalContainer = d.getElementById('modalContainer');
-const shopContent = d.getElementById('shopContent');
-const cantidadCarrito = d.getElementById('cantidadCarrito');
-const inputSearch = d.getElementById('inputSearch');
-const comprar = d.getElementById('addToCart');
-const categoriesUl = d.getElementById('categories');
-const renderProducts = d.getElementById('renderProducts');
-const showProducts = d.getElementById('showProducts');
+// Empiezo trayendo el contenedor para guardar adentro la lógica
+const shopContent = document.getElementById('shopContent');
+const inputSearch = document.getElementById('inputSearch');
+const categoriesUl = document.getElementById('categories');
+const renderProd = document.getElementById('renderProducts');
 
-// FUNCIÓN QUE RENDERIZA TODOS LOS PRODUCTOS
+// Función que renderiza los productos:
+/*  +  Recorro los productos para que se renderizen como grilla
+    +   Función reutilizable */
 async function productsGrid(products) {
     products.forEach(product => {
-        let content = d.createElement('div');
+        let content = document.createElement('div');
         content.className = 'col-md-4 mt-2';
         content.innerHTML = ` 
         <div class="card">
@@ -60,7 +55,8 @@ async function productsGrid(products) {
 
                     <h3 class="mb-0 font-weight-semibold" id='price'>
                     $ ${product.price}
-                    </h3>                 
+                    </h3>
+                    
                 </div>
             </div> 
         </div>  
@@ -69,26 +65,29 @@ async function productsGrid(products) {
     });
 };
 
-{/* <button type="button" class="btn bg-cart" id="addToCart">Add to cart</button> */}
-
+// Función que busca los productos: 
+/*  + Utilizo keyup para que el renderizado de los productos a la hora de buscar sea en el momento. 
+    + PreventDefault para que no recargue la página a la hora de buscar */
 async function showSearchProducts() {
     inputSearch.addEventListener('keyup', async (event) => {
+        event.preventDefault();
         let products = await searchProducts(event.target.value);
         shopContent.innerHTML = '';
         productsGrid(products);
     });
 };
 
+// Función que muestra y renderiza las categorías:
+/*  + Empiezo creando una función para hacer que la primera letra sea en Mayus.
+    + Primer forEach: renderiza cada categoría traída por la ruta allCategories()
+    + Segundo forEach: comparando cada id de la utiqueda HTML, renderizado en el primer forEach, con el que entrega el evento.onclick, renderizamos los productos de la categoría correspondiente*/
 async function showSelectCategories(categories) {
-    const products = await allProducts();
+    function capitalizarPrimeraLetra(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
 
     categories.forEach(categorie => {
-
-        function capitalizarPrimeraLetra(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-
-        let content = d.createElement('li');
+        let content = document.createElement('li');
         content.className = 'dropdown-item';
         content.innerHTML = ` 
         <li>
@@ -99,21 +98,22 @@ async function showSelectCategories(categories) {
     });
 
     const itemLink = document.querySelectorAll("#categories li a");
-
     itemLink.forEach(item => {
         item.addEventListener('click', (event) => {
-            if (event.target.id === item.id) {
-                productsInCategories(item.id)
-            } else {
-                shopContent.innerHTML = ""
-                productsGrid(products)
-            };
+            if (event.target.id === item.id) productsInCategories(item.id)
         });
     });
-    showProducts.addEventListener('click', productsGrid(products));
 };
 
-//EJECUTO LA APLICACIÓN
+// Función para botón que muestre todos los productos:
+/*  + Le asigno a al botón Productos la funcionalidad de que muestre todos los productos en caso de necesitarlo */
+async function renderProducts() {
+    const products = await allProducts();
+    renderProd.addEventListener('click', productsGrid(products));
+}
+
+// Funcion que ejecuta todas las funciones anteriores:
+/* + Las funciones se concentran en una sola para saber que es lo que se renderiza y en que orden*/
 async function startApplication() {
     let getProducts = await allProducts();
     productsGrid(getProducts);
@@ -121,4 +121,5 @@ async function startApplication() {
     showSearchProducts();
 };
 
+// Ejecuto la aplicación
 startApplication();

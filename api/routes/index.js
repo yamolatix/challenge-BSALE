@@ -7,6 +7,7 @@ const categoryRoutes = require('./category');
 router.use('/products', productsRoutes);
 router.use('/category', categoryRoutes);
 
+// Middelware de error
 router.use((req, res, next) => {
     res.status(404).json({
         message: 'Page not found'
