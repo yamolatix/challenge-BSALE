@@ -40,6 +40,12 @@ npm start
 
 <img src="./documentation/diagrama.png" alt="Diagrama de Flujo - Desafío BSALE">
 
+### Visualizaciones
+
+<img src="./documentation/snacks-category.png" alt="Snacks - Desafío BSALE">
+
+<img src="./documentation/buscador.png" alt="Buscador - Desafío BSALE">
+
 ### Lista de Endpoints
 #### (Con una X rutas consumidas para esta primera etapa de desarrollo)
 Cabe aclarar la prioridad de los puntos a cumplir del ejercicio fueron realizados. Por lo que las rutas pendientes a consumir se harán a futuro a modo de seguir ejercitando el pensamiento lógico .
