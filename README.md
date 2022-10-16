@@ -2,7 +2,7 @@
 - Lenguajes Frontend: Vanilla JS, HTML
 - Librería de Estilos: Bootstrap
 - Lenguajes Backend: Mysql, SQL, Express, NodeJS.
-- Hosting Frontend: Vercel
+- Hosting Frontend: GitHub Pages
 - Hosting Backend: Render
 
 ### Generalidades
@@ -16,10 +16,10 @@ Esta API permite llamadas del tipo REST y utiliza JSON para el envío y recepci�
 ### Herramientas útiles
 
 #### Hosting Front 
-https://desafio-bsale-front-nu.vercel.app/
+https://yamilaortiztoscano.com.ar/bsale/
 
 #### Hosting Back
-https://desafio-bsale-back.onrender.com
+https://desafio-bsale-back.onrender.com/
 
 #### Configuración
 
