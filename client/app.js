@@ -10,56 +10,42 @@ async function searchProducts(name) {
     let result = await axios.get(`http://localhost:3001/api/products/search/${name}`)
     let productsSearch = result.data
     return productsSearch
-}
+};
 
 // Pedido que busca las categorias
 async function allCategories() {
     let result = await axios.get(`http://localhost:3001/api/category`)
     let productsSearch = showSelectCategories(result.data)
     return productsSearch
-}
-
-// Pedido de los productos que trae cada categoría
-async function productsInCategories(id) {
-    let result = await axios.get(`http://localhost:3001/api/category/${id}`);
-    let productsSearch = result.data;
-    shopContent.innerHTML = '';
-    productsGrid(productsSearch);
-}
+};
 
 // HTML
 // Empiezo trayendo el contenedor para guardar adentro la lógica
 const shopContent = document.getElementById('shopContent');
 const inputSearch = document.getElementById('inputSearch');
 const categoriesUl = document.getElementById('categories');
-const renderProd = document.getElementById('renderProducts');
 
 // Función que renderiza los productos:
 /*  +  Recorro los productos para que se renderizen como grilla
     +   Función reutilizable */
 async function productsGrid(products) {
-    products.forEach(product => {
+    products.map((product) => {
         let content = document.createElement('div');
-        content.className = 'col-md-4 mt-2';
+        content.className = 'col-xl-3 col-md-6 mb-4';
         content.innerHTML = ` 
-        <div class="card">
+        <div class="card border-0 shadow">
             <div class="card-body">
-                <div class="card-img-actions">
-                    <img src='${product.url_image === '' ? "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image-300x200.png" : product.url_image}' class='card-img img-fluid' width="96" height="350">
-                </div> 
-
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2">${product.name.toUpperCase()}</h6>
-                    </div>
-
-                    <h3 class="mb-0 font-weight-semibold" id='price'>
-                    $ ${product.price}
-                    </h3>
-                    
+                <img src='${product.url_image === '' ? "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image-300x200.png" : product.url_image}' class="card-img-top" alt="...">
+        
+                <div class="card-body text-center">
+                    <h6 class="card-title mb-0">${product.name.toUpperCase()}</h6>
+        
+                    <div class="card-text text-black-50" id='price'>
+                        $ ${product.price}
+                    </div>    
                 </div>
-            </div> 
-        </div>  
+            </div>
+        </div>
         `;
         shopContent.append(content);
     });
@@ -79,14 +65,14 @@ async function showSearchProducts() {
 
 // Función que muestra y renderiza las categorías:
 /*  + Empiezo creando una función para hacer que la primera letra sea en Mayus.
-    + Primer forEach: renderiza cada categoría traída por la ruta allCategories()
-    + Segundo forEach: comparando cada id de la utiqueda HTML, renderizado en el primer forEach, con el que entrega el evento.onclick, renderizamos los productos de la categoría correspondiente*/
+    + Primer map: renderiza cada categoría traída por la ruta allCategories()
+    + Segundo map: comparando cada id de la utiqueda HTML, renderizado en el primer map, con el que entrega el evento.onclick, renderizamos los productos de la categoría correspondiente*/
 async function showSelectCategories(categories) {
     function capitalizarPrimeraLetra(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
 
-    categories.forEach(categorie => {
+    categories.map(categorie => {
         let content = document.createElement('li');
         content.className = 'dropdown-item';
         content.innerHTML = ` 
@@ -105,10 +91,19 @@ async function showSelectCategories(categories) {
     });
 };
 
+// Función que trae los productos de cada categoría.
+async function productsInCategories(id) {
+    const products = await allProducts()
+    let result = await products.filter(product => id === product.category.toString())
+    shopContent.innerHTML = '';
+    let categoryProducts = await productsGrid(result)
+    return categoryProducts
+};
+
 // Función para botón que muestre todos los productos:
 /*  + Le asigno a al botón Productos la funcionalidad de que muestre todos los productos en caso de necesitarlo */
-async function renderProducts() {
-    const products = await allProducts();
+async function renderProducts(products) {
+    const renderProd = document.getElementById('renderProducts');
     renderProd.addEventListener('click', productsGrid(products));
 }
 
@@ -117,7 +112,8 @@ async function renderProducts() {
 async function startApplication() {
     let getProducts = await allProducts();
     productsGrid(getProducts);
-    await allCategories();
+    renderProducts(getProducts)
+    allCategories();
     showSearchProducts();
 };
 

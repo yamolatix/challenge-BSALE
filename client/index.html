@@ -13,9 +13,9 @@
 
 <body>
     <!-- NAVBAR -->
-    <nav class='navbar navbar-expand-lg bg-light'>
+    <nav class='navbar fixed-top navbar-expand  text-white bg-dark' id="navbar">
         <div class='container-fluid'>
-            <a class='navbar-brand'>BSALE</a>
+            <a class='navbar-brand text-white'>BSALE</a>
 
             <button class='navbar-toggler' type='button' data-bs-toggle='collapse'
                 data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false'
@@ -24,16 +24,17 @@
             </button>
             <div class='collapse navbar-collapse' id='navbarSupportedContent'>
                 <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" id="renderProducts">Products</a>
-                    </li>
                     <li class='nav-item dropdown'>
-                        <a class='nav-link dropdown-toggle' role='button' data-bs-toggle='dropdown'
+                        <a class='nav-link dropdown-toggle text-white' role='button' data-bs-toggle='dropdown'
                             aria-expanded='false'>
                             Categories
                         </a>
-                        <ul class='dropdown-menu' id="categories">
+                        <ul class='dropdown-menu ' id="categories">
                         </ul>
+                    <li class="nav-item text-white" id="renderProducts">
+                        <a class="nav-link active text-white" aria-current="page" href="#"
+                            id="renderProducts">Products</a>
+                    </li>
                     </li>
                 </ul>
                 <form class='d-flex' role='search'>
@@ -49,6 +50,7 @@
         <div class='row' id='shopContent'>
         </div>
     </div>
+    
     <!-- Script para que los pedidos externos funcionen -->
     <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
     <!-- Bootstrap -->
