@@ -50,11 +50,11 @@ npm start
 #### (Con una X rutas consumidas para esta primera etapa de desarrollo)
 Cabe aclarar la prioridad de los puntos a cumplir del ejercicio fueron realizados. Por lo que las rutas pendientes a consumir se harán a futuro a modo de seguir ejercitando el pensamiento lógico .
 
-- [GET] /api/products/api                             [X]
-- [GET] /api/products/api/products/:id                []
-- [GET] /api/products/api/products/search/:name       [X]
-- [GET] /api/products/api/category                    [X]
-- [GET] /api/products/api/category/:categoryId        []
+- [X] [GET] /api/products/api                             
+- [ ] [GET] /api/products/api/products/:id
+- [X] [GET] /api/products/api/products/search/:name
+- [X] [GET] /api/products/api/category                    
+- [ ] [GET] /api/products/api/category/:categoryId
 
 ### Estructura JSON
 Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente estructura:
