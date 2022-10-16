@@ -15,7 +15,26 @@ Esta API permite llamadas del tipo REST y utiliza JSON para el envío y recepci�
 
 ### Herramientas útiles
 
-Para ver los requests desde el back se puede utilizar Thunder Client o Postman.
+#### Hosting Front 
+https://desafio-bsale-front-nu.vercel.app/
+
+#### Hosting Back
+https://desafio-bsale-back.onrender.com
+
+#### Configuración
+
+Clona este repositorio y corré en la terminal:
+```sh 
+npm install
+``` 
+para instalar las dependencias desde la carpeta `api` y `client` por separado.
+
+### Uso
+
+Después de clonar el repositorio y haber instalado las dependencias. Podes correr desde la carpeta `client` y `api` por separado:
+```sh 
+npm start
+```
 
 ### Diagrama de Flujo 
 
