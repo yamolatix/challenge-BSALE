@@ -1,4 +1,4 @@
-# Desafío Producto BSALE - 2022 | Frontend
+# Desafío Producto BSALE
 - Lenguajes Frontend: Vanilla JS, HTML
 - Librería de Estilos: Bootstrap
 - Lenguajes Backend: Mysql, SQL, Express, NodeJS.
