@@ -9,4 +9,16 @@ const pool = createPool({
     database: 'bsale_test',
 });
 
+function handleConnection() {
+    pool.getConnection(function (err, connection) {
+        if (err) {
+            console.error("mysql getConnection err", err);
+            return;
+        }
+        connection.ping();
+        connection.release();
+    });
+}
+setInterval(handleConnection, 5000);
+
 module.exports = pool;
