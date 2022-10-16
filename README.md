@@ -25,18 +25,18 @@ Para ver los requests desde el back se puede utilizar Thunder Client o Postman.
 #### (Con una X rutas consumidas para esta primera etapa de desarrollo)
 Cabe aclarar la prioridad de los puntos a cumplir del ejercicio fueron realizados. Por lo que las rutas pendientes a consumir se harán a futuro a modo de seguir ejercitando el pensamiento lógico .
 
-[GET] /api/products/api                             [X]
-[GET] /api/products/api/products/:id                []
-[GET] /api/products/api/products/search/:name       [X]
-[GET] /api/products/api/category                    [X]
-[GET] /api/products/api/category/:categoryId        []
+- [GET] /api/products/api                             [X]
+- [GET] /api/products/api/products/:id                []
+- [GET] /api/products/api/products/search/:name       [X]
+- [GET] /api/products/api/category                    [X]
+- [GET] /api/products/api/category/:categoryId        []
 
 ### Estructura JSON
 Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente estructura:
 
 [GET] /api/products/api
 
-``
+```sh 
 [
   {
     "id": 5,
@@ -55,11 +55,11 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
     "category": 1
   },
   ...
-``
+``` 
 
 [GET] /api/products/api/products/:id
 
-``
+```sh 
 [
   {
     "id": 5,
@@ -70,11 +70,11 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
     "category": 1
   }
 ]
-``
+``` 
 
 [GET] /api/products/api/products/search/:name
 
-``
+```sh 
 [
   {
     "id": 48,
@@ -93,11 +93,11 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
     "category": 4
   },
 ...
-``
+``` 
 
 [GET] /api/products/api/category
 
-`` 
+```sh 
 [
   {
     "id": 1,
@@ -112,11 +112,11 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
     "name": "ron"
   },
 ...
-``
+``` 
 
 [GET] /api/products/api/category/:categoryId
 
-`` 
+```sh 
 [
   {
     "id": 7,
@@ -127,17 +127,17 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
     "category": 7
   }
 ]
+``` 
 
-``
 #### En caso de que devuelva un error el JSON será el siguiente:
 
-``
+```sh 
 [
     {
         message: 'Something goes wrong' 
     }
 ]
-``
+``` 
 
 ### Otros proyectos
 <a href="https://www.youtube.com/watch?v=0ZmGGYafT7U&ab_channel=YamilaOrtizToscano" target="_blank" rel="noreferrer">miTurno - Youtube</a>
