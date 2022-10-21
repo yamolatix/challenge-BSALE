@@ -1,35 +1,7 @@
 //Importo la función utilizada para producción de mysql
 const { createPool } = require('mysql');
+const DATA_BASE = require('./config')
 
-// CHEQUEAR EL .ENV!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-//Requiero el .env
-/* require('dotenv').config(); */
-
-// Creo el objeto de conexion y lo guardo en una constante
-/* const pool = createPool({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-}); */
-
-const pool = createPool({
-    host: "mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com",
-    user: "bsale_test",
-    password: "bsale_test",
-    database: "bsale_test",
-});
-
-/* function handleConnection() {
-    pool.getConnection(function (err, connection) {
-        if (err) {
-            console.error('mysql getConnection err', err);
-            return;
-        }
-        connection.ping();
-        connection.release();
-    });
-}
-setInterval(handleConnection, 5000); */
+const pool = createPool(DATA_BASE);
 
 module.exports = pool;

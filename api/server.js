@@ -10,7 +10,7 @@ const cors = require('cors');
 const volleyball = require('volleyball')
 
 // Importo rutas
-const routes = require('./routes');
+const routes = require('./controllers');
 
 const app = express();
 
@@ -30,22 +30,12 @@ app.use('/api', routes);
 
 // El Middleware para manejo de errores posee un parámetro extra, en este caso lo llamo err
 // Este último Middleware detecta los errores y los coloca en dicho parámetro
-
-app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.status = 404;
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Some custom error!', err.message);
     next(err);
 });
 
-app.use((err, req, res, next) => {
-    res.locals.error = err;
-    const status = err.status || 500;
-    res.status(status);
-    res.json({
-        message: err.message,
-        error: err
-    });
-});
 // Conecto servidor
 const PORT = process.env.PORT;
 

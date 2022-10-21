@@ -1,11 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 
-const productsRoutes = require('./products');
-const categoryRoutes = require('./category');
+const productsController = require('./productsController');
+const categoryController = require('./categoryController');
 
-router.use('/products', productsRoutes);
-router.use('/category', categoryRoutes);
+router.use('/products', productsController);
+router.use('/category', categoryController);
 
 // Middelware de error
 router.use((req, res, next) => {
