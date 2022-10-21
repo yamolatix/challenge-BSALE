@@ -1,5 +1,31 @@
 body {
     margin: 0px;
-    padding-top: 90px;
-    background-color: rgb(215, 59, 59);
+    padding-top: 100px;
+    background-color: #1866661f !important;
+}
+
+.container a {
+    font-size: 11px;
+    padding: 0;
+}
+
+#navbar-top {
+    padding: 0;
+    height: 16px;
+    background-color: #EEBCFE;
+    color: #186666 !important;
+}
+
+#navbar {
+    background-color: #186666;
+    color: white;
+}
+
+#bsale {
+    color: #EEBCFE;
+
+}
+
+.container {
+    margin: 0;
 }
