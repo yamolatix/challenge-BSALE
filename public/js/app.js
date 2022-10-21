@@ -19,6 +19,14 @@ async function allCategories() {
     return productsSearch
 };
 
+// Función que trae los productos de cada categoría.
+async function productsInCategories(id) {
+    let result = await axios.get(`http://localhost:3001/api/category/${id}`)
+    shopContent.innerHTML = '';
+    let categoryProducts = await productsGrid(result.data)
+    return categoryProducts
+};
+
 // HTML
 // Empiezo trayendo el contenedor para guardar adentro la lógica
 const shopContent = document.getElementById('shopContent');
@@ -89,15 +97,6 @@ async function showSelectCategories(categories) {
             if (event.target.id === item.id) productsInCategories(item.id)
         });
     });
-};
-
-// Función que trae los productos de cada categoría.
-async function productsInCategories(id) {
-    const products = await allProducts()
-    let result = await products.filter(product => id === product.category.toString())
-    shopContent.innerHTML = '';
-    let categoryProducts = await productsGrid(result)
-    return categoryProducts
 };
 
 // Función para botón que muestre todos los productos:

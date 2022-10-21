@@ -31,7 +31,7 @@ products.get('/search/:name', async (req, res, next) => {
             return res.send(search);
         })
     } catch (error) {
-        return res.status(500).json({ message: 'Something goes wrong searchProducts' })
+        return res.status(500).json({ message: 'Something goes wrong in controller: searchProducts' })
     }
 });
 
