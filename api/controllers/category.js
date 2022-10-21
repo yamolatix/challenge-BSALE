@@ -16,6 +16,7 @@ exports.allCategories = async (req, res, next) => {
     }
 };
 
+//Ruta que muestra los productos correspondientes a una categoría
 exports.productsInCategories = async (req, res, next) => {
     try {
         const baseQuery = 'SELECT * FROM product INNER JOIN category ON category.id=product.category WHERE product.category=?'
