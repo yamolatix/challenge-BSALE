@@ -1,14 +1,21 @@
 body {
     margin: 0px;
-    padding-top: 100px;
-    background-color: #1866661f !important;
+    padding-top: 100px; /* Navbar fixed. Entonces el body debe bajar para que no se suporpongan */
+    background-color: #1866661f !important; /* !important para darle prioridad antes que los que vienen por default por Bootstrap */
 }
 
+/* Container dentro primer navbar */
+.container {
+    margin: 0;
+}
+
+/* Etiqueta a del primer navbar */
 .container a {
     font-size: 11px;
     padding: 0;
 }
 
+/* Primer navbar */
 #navbar-top {
     padding: 0;
     height: 16px;
@@ -16,16 +23,13 @@ body {
     color: #186666 !important;
 }
 
+/* Segundo navbar */
 #navbar {
     background-color: #186666;
     color: white;
 }
 
+/* Titulo del segundo navbar */
 #bsale {
     color: #EEBCFE;
-
-}
-
-.container {
-    margin: 0;
 }

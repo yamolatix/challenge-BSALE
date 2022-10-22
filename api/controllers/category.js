@@ -1,9 +1,10 @@
-const { Router } = require('express');
-const category = Router();
-const pool = require('../config/db');
-const { allCategories, productsInCategories } = require('../models/category');
-// const models = require('../models/category');
+const { Router } = require('express'); // Requiero Express.js
+const category = Router(); // Conecto Express.js para su uso y le asigno el nombre
+const pool = require('../config/db'); // Llamo a la db para hacerle los pedidos
+const { allCategories, productsInCategories } = require('../models/category'); // Llamo a los models con los pedidos
+// const models = require('../models/category'); // Llamo a los models con los pedidos
 
+// GET "/api/category" Controller que trae todas las categorias
 /* category.get('/', async (req, res) => {
     try {
         const categories = await models.getAllCategories();
@@ -13,6 +14,7 @@ const { allCategories, productsInCategories } = require('../models/category');
     }
 });
 
+// GET "/api/category/:categoryId" Controller que trae los productos que pertenecen a X categoria
 category.get('/:categoryId', async (req, res) => {
     try {
         const categories = await models.getProductsInCategories();
@@ -22,6 +24,7 @@ category.get('/:categoryId', async (req, res) => {
     }
 }); */
 
+// GET "/api/category" Controller que trae todas las categorias
 category.get('/', async (req, res, next) => {
     try {
         await pool.query(allCategories, (err, result) => {
@@ -36,6 +39,7 @@ category.get('/', async (req, res, next) => {
     }
 });
 
+// GET "/api/category/:categoryId" Controller que trae los productos que pertenecen a X categoria
 category.get('/:categoryId', async (req, res, next) => {
     try {
         await pool.query(productsInCategories, [req.params.categoryId], (err, result) => {
@@ -50,4 +54,4 @@ category.get('/:categoryId', async (req, res, next) => {
     }
 });
 
-module.exports = category;
+module.exports = category; // Exporto los controllers

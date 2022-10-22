@@ -1,9 +1,11 @@
-const { Router } = require('express');
-const router = Router();
+const { Router } = require('express'); // Requiero Express.js
+const router = Router(); // Conecto Express.js para su uso y le asigno el nombre. En este caso será "router" 
 
+// Llamo a los controllers (rutas)
 const productsController = require('./products');
 const categoryController = require('./category');
 
+// Conecto y ruteo 
 router.use('/products', productsController);
 router.use('/category', categoryController);
 
@@ -12,4 +14,4 @@ router.use((req, res, next) => {
     res.status(404).json('Page not found')
 });
 
-module.exports = router;
+module.exports = router; // Exporto el nodo padre de las rutas
