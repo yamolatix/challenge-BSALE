@@ -7,13 +7,22 @@ async function allProducts() {
 
 // Pedido que busca los productos de acuerdo a su nombre
 async function searchProducts(name) {
-    let result = await axios.get(`http://localhost:3001/api/products/search/${name}`)
-    if (result.data === "") {
-        shopContent.innerHTML = `<div class='center'>Product not found</div>`;
-    } else {
-        return result.data
+    try {
+        let result = await axios.get(`http://localhost:3001/api/products/search/${name}`)
+
+        if (result.data === "") {
+            shopContent.innerHTML = `<div>Product not found</div>`;
+        } else {
+            return result.data
+        }
+    } catch (error) {
+        if (error.response.status === 404) {
+            shopContent.innerHTML = ''
+            let getProducts = await allProducts();
+            productsGrid(getProducts);
+        }
     }
-};
+}
 
 // Pedido que busca las categorias
 async function allCategories() {
@@ -66,17 +75,16 @@ async function productsGrid(products) {
 /*  + Utilizo keyup para que el renderizado de los productos a la hora de buscar sea en el momento. 
     + PreventDefault para que no recargue la página a la hora de buscar */
 async function showSearchProducts() {
+
     inputSearch.addEventListener('keyup', async (e) => {
-        /* e.preventDefault() */
+
         let productsSearch = await searchProducts(e.target.value);
 
-        if (e.key === "Enter") e.preventDefault()
-
-        if (productsSearch != undefined) {
+        if (productsSearch !== undefined) {
             shopContent.innerHTML = ''
             productsGrid(productsSearch);
         }
-    });
+    })
 };
 
 // Función que muestra y renderiza las categorías:

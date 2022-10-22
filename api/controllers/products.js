@@ -48,7 +48,7 @@ products.get('/search/:name', async (req, res, next) => {
 
             const search = result;
 
-            if (search.length <= 0) return res.status(404).json({ message: 'Product not found' })
+            if (search.length <= 0) return res.status(204).json({ message: 'Product not found' })
 
             return res.send(search);
         })
