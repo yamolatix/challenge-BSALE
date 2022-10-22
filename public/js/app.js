@@ -8,8 +8,11 @@ async function allProducts() {
 // Pedido que busca los productos de acuerdo a su nombre
 async function searchProducts(name) {
     let result = await axios.get(`http://localhost:3001/api/products/search/${name}`)
-    let productsSearch = result.data
-    return productsSearch
+    if (result.data === "") {
+        shopContent.innerHTML = `<div class='center'>Product not found</div>`;
+    } else {
+        return result.data
+    }
 };
 
 // Pedido que busca las categorias
@@ -41,14 +44,14 @@ async function productsGrid(products) {
         let content = document.createElement('div');
         content.className = 'col-xl-3 col-md-6 mb-4';
         content.innerHTML = ` 
-        <div class="card border-0 shadow">
-            <div class="card-body">
-                <img src='${product.url_image === '' ? "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image-300x200.png" : product.url_image}' class="card-img-top" alt="...">
+        <div class='card border-0 shadow'>
+            <div class='card-body'>
+                <img src='${product.url_image === '' ? 'https://talentclick.com/wp-content/uploads/2021/08/placeholder-image-300x200.png' : product.url_image}' class='card-img-top' alt='...'>
         
-                <div class="card-body text-center">
-                    <h6 class="card-title mb-0">${product.name.toUpperCase()}</h6>
+                <div class='card-body text-center'>
+                    <h6 class='card-title mb-0'>${product.name.toUpperCase()}</h6>
         
-                    <div class="card-text text-black-50" id='price'>
+                    <div class='card-text text-black-50' id='price'>
                         $ ${product.price}
                     </div>    
                 </div>
@@ -56,18 +59,23 @@ async function productsGrid(products) {
         </div>
         `;
         shopContent.append(content);
-    });
+    })
 };
 
 // Función que busca los productos: 
 /*  + Utilizo keyup para que el renderizado de los productos a la hora de buscar sea en el momento. 
     + PreventDefault para que no recargue la página a la hora de buscar */
 async function showSearchProducts() {
-    inputSearch.addEventListener('keyup', async (event) => {
-        event.preventDefault();
-        let products = await searchProducts(event.target.value);
-        shopContent.innerHTML = '';
-        productsGrid(products);
+    inputSearch.addEventListener('keyup', async (e) => {
+        /* e.preventDefault() */
+        let productsSearch = await searchProducts(e.target.value);
+
+        if (e.key === "Enter") e.preventDefault()
+
+        if (productsSearch != undefined) {
+            shopContent.innerHTML = ''
+            productsGrid(productsSearch);
+        }
     });
 };
 
@@ -91,7 +99,7 @@ async function showSelectCategories(categories) {
         categoriesUl.append(content);
     });
 
-    const itemLink = document.querySelectorAll("#categories li a");
+    const itemLink = document.querySelectorAll('#categories li a');
     itemLink.forEach(item => {
         item.addEventListener('click', (event) => {
             if (event.target.id === item.id) productsInCategories(item.id)
@@ -101,17 +109,17 @@ async function showSelectCategories(categories) {
 
 // Función para botón que muestre todos los productos:
 /*  + Le asigno a al botón Productos la funcionalidad de que muestre todos los productos en caso de necesitarlo */
-async function renderProducts(products) {
+/* async function renderProducts(products) {
     const renderProd = document.getElementById('renderProducts');
     renderProd.addEventListener('click', productsGrid(products));
-}
+} */
 
 // Funcion que ejecuta todas las funciones anteriores:
 /* + Las funciones se concentran en una sola para saber que es lo que se renderiza y en que orden*/
 async function startApplication() {
     let getProducts = await allProducts();
     productsGrid(getProducts);
-    renderProducts(getProducts)
+    /*     renderProducts(getProducts) */
     allCategories();
     showSearchProducts();
 };

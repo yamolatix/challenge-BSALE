@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const router = Router();
 
-const productsController = require('./productsController');
-const categoryController = require('./categoryController');
+const productsController = require('./products');
+const categoryController = require('./category');
 
 router.use('/products', productsController);
 router.use('/category', categoryController);
