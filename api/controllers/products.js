@@ -1,14 +1,14 @@
 const { Router } = require('express'); // Requiero Express.js
 const products = Router();  // Conecto Express.js para su uso y le asigno el nombre
-const pool = require('../config/db');  // Llamo a la db para hacerle los pedidos
-const { allProducts, searchProducts } = require('../models/product'); // Llamo a los models con los pedidos
-// const models = require('../models/product'); // Llamo a los models con los pedidos
+// const pool = require('../config/db');  // Llamo a la db para hacerle los pedidos
+// const { allProducts, searchProducts } = require('../models/product'); // Llamo a los models con los pedidos
+const models = require('../models/product'); // Llamo a los models con los pedidos
 
 // GET "/api/products" Controller que trae todos los productos
-/* products.get('/', async (req, res) => {
+products.get('/', async (req, res) => {
     try {
         const products = await models.getAllProducts();
-        return res.send(products);
+        return await res.send(products);
     } catch (error) {
         console.log(error)
     }
@@ -26,10 +26,10 @@ products.get('/search/:name', async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: 'Something goes wrong in controller: searchProducts' })
     }
-}); */
+});
 
 // GET "/api/products" Controller que trae todos los productos
-products.get('/', async (req, res, next) => {
+/* products.get('/', async (req, res, next) => {
     try {
         await pool.query(allProducts, (err, result) => {
 
@@ -61,6 +61,6 @@ products.get('/search/:name', async (req, res, next) => {
     } catch (error) {
         return res.status(500).json({ message: 'Something goes wrong in controller: searchProducts' })
     }
-});
+}); */
 
 module.exports = products; // Exporto los controllers
