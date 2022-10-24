@@ -48,13 +48,11 @@ npm start
 
 ### Lista de Endpoints
 #### (Con una X rutas consumidas para esta primera etapa de desarrollo)
-Cabe aclarar la prioridad de los puntos a cumplir del ejercicio fueron realizados. Por lo que las rutas pendientes a consumir se harán a futuro a modo de seguir ejercitando el pensamiento lógico .
 
 - [X] [GET] /api/products/api                             
-- [ ] [GET] /api/products/api/products/:id
 - [X] [GET] /api/products/api/products/search/:name
 - [X] [GET] /api/products/api/category                    
-- [ ] [GET] /api/products/api/category/:categoryId
+- [X] [GET] /api/products/api/category/:categoryId
 
 ### Estructura JSON
 Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente estructura:
@@ -80,21 +78,6 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
     "category": 1
   },
   ...
-``` 
-
-[GET] /api/products/api/products/:id
-
-```sh 
-[
-  {
-    "id": 5,
-    "name": "ENERGETICA MR BIG",
-    "url_image": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
-    "price": 1490,
-    "discount": 20,
-    "category": 1
-  }
-]
 ``` 
 
 [GET] /api/products/api/products/search/:name
@@ -159,7 +142,7 @@ Al realizar una petición HTTP, el servicio retornara un JSON con la siguiente e
 ```sh 
 [
     {
-        message: 'Something goes wrong' 
+        message: 'Something goes wrong in controller: ******' 
     }
 ]
 ``` 
