@@ -5,10 +5,8 @@ const models = require('../models/category'); // Llamo a los models con los pedi
 // GET "/api/category" Controller que trae todas las categorias
 category.get('/', async (req, res) => {
     try {
-        await models.getAllCategories((err, result) => {
-            if (err) return err;
-            res.send(result);
-        });
+        const categories = await models.getAllCategories()
+        res.send(categories)
     } catch (error) {
         return res.status(500).json({ message: 'Something goes wrong in controller: getAllCategories' })
     }
@@ -17,10 +15,8 @@ category.get('/', async (req, res) => {
 // GET "/api/category/:categoryId" Controller que trae los productos que pertenecen a X categoria
 category.get('/:categoryId', async (req, res) => {
     try {
-        await models.getProductsInCategories(req.params.categoryId, (err, result) => {
-            if (err) return err;
-            res.send(result);
-        });
+        const productsInCategories = await models.getProductsInCategories(req.params.categoryId)
+        res.send(productsInCategories)
     } catch (error) {
         return res.status(500).json({ message: 'Something goes wrong in controller: productsInCategories' })
     }

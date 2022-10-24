@@ -1,7 +1,9 @@
 body {
     margin: 0px;
-    padding-top: 100px; /* Navbar fixed. Entonces el body debe bajar para que no se suporpongan */
-    background-color: #1866661f !important; /* !important para darle prioridad antes que los que vienen por default por Bootstrap */
+    padding-top: 100px;
+    /* Navbar fixed. Entonces el body debe bajar para que no se suporpongan */
+    background-color: #1866661f !important;
+    /* !important para darle prioridad antes que los que vienen por default por Bootstrap */
 }
 
 /* Container dentro primer navbar */
@@ -32,4 +34,20 @@ body {
 /* Titulo del segundo navbar */
 #bsale {
     color: #EEBCFE;
+}
+
+/* Color del Productos */
+#home {
+    color: white;
+}
+
+/* Etiquetas <a> de Home y de los li que están dentro del segundo navbar */
+#home,
+.dropdown-item {
+    cursor: pointer;
+}
+
+/* Titlo de los productos */
+.card-title{
+    font-size: 14px;
 }

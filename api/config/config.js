@@ -5,6 +5,7 @@ const config = {
         user: "bsale_test",
         password: "bsale_test",
         database: "bsale_test",
+        multipleStatements: true
     }
 }
 
