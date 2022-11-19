@@ -1,11 +1,12 @@
+require('dotenv').config(); //Requiero el .env para su funcionamiento
+
 // Loader con la información para la conexion de la DB
 const config = {
     db: {
-        host: "mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com",
-        user: "bsale_test",
-        password: "bsale_test",
-        database: "bsale_test",
-        multipleStatements: true
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        database: process.env.DB_NAME,
+        password: process.env.DB_PASSWORD,
     }
 }
 

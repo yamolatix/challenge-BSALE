@@ -81,6 +81,21 @@ async function productsGrid(products) {
 /*  + Utilizo keyup para que el renderizado de los productos a la hora de buscar sea en el momento. 
     + PreventDefault para que no recargue la página a la hora de buscar */
 async function showSearchProducts() {
+    const formSearch = document.getElementById('formSearch')
+
+    formSearch.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const inputSearch = await document.getElementById('inputSearch').value
+        let productsSearch = await searchProducts(inputSearch);
+
+        if (productsSearch !== undefined) {
+            shopContent.innerHTML = ''
+            return productsGrid(productsSearch);
+        }
+    })
+};
+
+/* async function showSearchProducts() {
     const inputSearch = document.getElementById('inputSearch');
     inputSearch.addEventListener('keyup', async (e) => {
 
@@ -91,7 +106,7 @@ async function showSearchProducts() {
             return productsGrid(productsSearch);
         }
     })
-};
+}; */
 
 // Función que muestra y renderiza las categorías:
 /*  + Empiezo creando una función para hacer que la primera letra sea en Mayus.
