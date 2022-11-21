@@ -1,3 +1,7 @@
+// HTML
+// Empiezo trayendo el contenedor genérico para guardar adentro la lógica
+const shopContent = document.getElementById('shopContent');
+
 // Pedido que trae todos los products
 async function allProducts() {
     let result = await axios.get('http://localhost:3001/api/products')
@@ -47,10 +51,6 @@ async function productsInCategories(id) {
     shopContent.innerHTML = '';
     return productsGrid(result.data)
 };
-
-// HTML
-// Empiezo trayendo el contenedor genérico para guardar adentro la lógica
-const shopContent = document.getElementById('shopContent');
 
 // Función que renderiza los productos:
 /*  +  Recorro los productos para que se renderizen como grilla
@@ -133,7 +133,7 @@ async function showSelectCategories(categories) {
     const itemLink = document.querySelectorAll('#categories li a');
     itemLink.forEach(item => {
         item.addEventListener('click', (event) => {
-            if (event.target.id === item.id) productsInCategories(item.id)
+            if (event.target.id === item.id) productsInCategories(event.target.id )
         });
     });
 };
