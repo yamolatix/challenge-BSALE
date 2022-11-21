@@ -1,9 +1,6 @@
-const { Router } = require('express'); // Requiero Express.js
-const products = Router();  // Conecto Express.js para su uso y le asigno el nombre
 const models = require('../models/product'); // Llamo a los models con los pedidos
 
-// GET "/api/products" Controller que trae todos los productos
-products.get('/', async (req, res) => {
+exports.getAllProductsController = async (req, res) => {
     try {
         const products = await models.getAllProducts()
         res.send(products);
@@ -11,10 +8,9 @@ products.get('/', async (req, res) => {
     } catch (error) {
         return res.status(500).send({ message: 'Something goes wrong in controller: allProducts' })
     }
-});
+}
 
-// GET "/api/products/search/:name" Controller que trae los productos que decidan buscarse
-products.get('/search/:name', async (req, res) => {
+exports.getSearchProductsController = async (req, res) => {
     try {
         const products = await models.getSearchProducts(req.params.name)
 
@@ -26,6 +22,4 @@ products.get('/search/:name', async (req, res) => {
     } catch (error) {
         return res.status(500).send({ message: 'Something goes wrong in controller: searchProducts' })
     }
-});
-
-module.exports = products; // Exporto los controllers
+};

@@ -2,12 +2,12 @@ const { Router } = require('express'); // Requiero Express.js
 const router = Router(); // Conecto Express.js para su uso y le asigno el nombre. En este caso será "router" 
 
 // Llamo a los controllers (rutas)
-const productsController = require('./products');
-const categoryController = require('./category');
+const productsRoutes = require('./products');
+const categoryRoutes = require('./category');
 
 // Conecto y ruteo 
-router.use('/products', productsController);
-router.use('/category', categoryController);
+router.use('/products', productsRoutes);
+router.use('/category', categoryRoutes);
 
 // Middelware de error
 router.use((req, res) => {
