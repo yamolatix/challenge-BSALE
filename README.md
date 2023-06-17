@@ -16,10 +16,10 @@ Esta API permite llamadas del tipo REST y utiliza JSON para el envío y recepci�
 ### Herramientas útiles
 
 #### Hosting Front 
-https://yamilaortiztoscano.com.ar/bsale/
+[https://desafio-drinks.netlify.app/](https://desafio-drinks.netlify.app/)
 
 #### Hosting Back
-https://desafio-bsale-back.onrender.com/
+[https://desafio-bsale-back.onrender.com/](https://desafio-bsale-back.onrender.com/)
 
 #### Configuración
 
